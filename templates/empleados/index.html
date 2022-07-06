@@ -1,5 +1,7 @@
 {% include 'header.html' %}
 
+<a class="btn btn-dark" href="{{url_for('create')}}">Ingresar empleado</a>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,12 +26,14 @@
         {% for empleado in empleados %}
         <tr>
             <td>{{empleado[0]}}</td>
-            <td>{{empleado[3]}}</td>
+            <td>
+                <img class="img-thumbnail" width="100px" src="uploads/{{empleado[3]}}" alt="">
+            </td>
             <td>{{empleado[1]}}</td>
             <td>{{empleado[2]}}</td>
-            <td> <a href="/edit/{{empleado[0]}}">Editar</a>
+            <td> <a class="btn btn-warning" href="/edit/{{empleado[0]}}">Editar</a>
                  | 
-                <a href="/destroy/{{empleado[0]}}">Borrar</a>
+                <a onclick="return confirm('Che , POSTA queres borrar???')" class="btn btn-danger" href="/destroy/{{empleado[0]}}">Borrar</a>
             </td>
         </tr>
         {% endfor %}
